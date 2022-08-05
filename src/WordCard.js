@@ -19,7 +19,16 @@ const prepareStateFromWord = (given_word) => {
 
 export default function WordCard(props){
     const [state, setState] = useState(prepareStateFromWord(props.value))
-    const [state2] = useState(prepareStateFromWord(props.value))
+    const [state2, setState2] = useState(prepareStateFromWord(state.shuffled))
+
+    const refreshWindows = () => { window.location.reload() }
+    const refreshBtn = () => {
+        return (
+            <div>
+            <button className="button" onClick={refreshWindows}>New Game</button>
+            </div>
+        )
+    }
 
     const activationHandler = (c) => {
         console.log(`${c} has been activated.`)
@@ -33,7 +42,9 @@ export default function WordCard(props){
                 setState({...state, guess: '', completed: true})
             }else{
                 console.log('reset')
-                setState({...state, guess: '', attempt: state.attempt + 1})
+                setState({...state, guess: '', attempt: state.attempt + 1, chars: _.shuffle(state.chars)})
+                setState2({...state2, shuffled: _.shuffle(state.chars).join("")})
+                console.log(`Answer = ${state2.shuffled}`)
             }
         }
     }
@@ -41,6 +52,11 @@ export default function WordCard(props){
     return (
         <div>
         { state.chars.map((c, i) => <CharacterCard value={c} key={i} activationHandler={activationHandler} attempt={state.attempt}/>) }
+        <div>
+        { state.completed ? refreshBtn() : '' }
+        <h2>Attempt = {state.attempt - 1}</h2>
         </div>
+        </div>
+
     );
 }
