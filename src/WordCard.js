@@ -37,7 +37,7 @@ export default function WordCard(props){
 
     return (
         <div>
-        { Array.from(props.value).map((c, i) => <CharacterCard value={c} key={i} activationHandler={activationHandler}/>) }
+        { Array.from(state.chars).map((c, i) => <CharacterCard value={c} key={i} activationHandler={activationHandler} attempt={state.attempt}/>) }
         </div>
     );
 }
