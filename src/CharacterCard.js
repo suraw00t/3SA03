@@ -18,6 +18,6 @@ export default function CharacterCard(props) {
     }, [props.attempt])
 
     return (
-        <div className={className} onClick={activate}>{props.value}</div>
+        <div className={ 'rounded-5 ' + className} onClick={activate}>{props.value}</div>
     )
 }

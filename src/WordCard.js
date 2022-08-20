@@ -24,8 +24,10 @@ export default function WordCard(props){
     const refreshWindows = () => { window.location.reload() }
     const refreshBtn = () => {
         return (
-            <div>
-            <button className="button" onClick={refreshWindows}>New Game</button>
+            <div className="alert alert-success">
+                <h4 className="alert-heading">Well done!</h4>
+                <hr/>
+                <button className="btn btn-success" onClick={refreshWindows}>New Game</button>
             </div>
         )
     }
@@ -50,13 +52,21 @@ export default function WordCard(props){
     }
 
     return (
-        <div>
-        { state.chars.map((c, i) => <CharacterCard value={c} key={i} activationHandler={activationHandler} attempt={state.attempt}/>) }
-        <div>
-        { state.completed ? refreshBtn() : '' }
-        <h2>Attempt = {state.attempt - 1}</h2>
-        </div>
-        </div>
+    <div className="bdy dark-background" style={{ backgroundImage: `url(https://i.ibb.co/nrmkm7d/five-bells-washed-out-logo.png)`, height:"100vh" }}>
+        <div className="outer-border">
+            <div className="mid-border">
+                <div className="inner-border">
+                    <div className="container text-center">
+                        { state.chars.map((c, i) => <CharacterCard value={c} key={i} activationHandler={activationHandler} attempt={state.attempt}/>) }
+                        <div className="alert alert-info">
+                            { state.completed ? refreshBtn() : '' }
+                            <h2>Attempt = {state.attempt - 1}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </div>
+</div>
 
     );
 }
