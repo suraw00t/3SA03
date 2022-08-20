@@ -18,7 +18,7 @@
 ---
 
 Inline-style: 
-![alt text](https://github.com/suraw00t/3SA03/blob/master/images/play.png "first page image")
+![alt text](https://github.com/suraw00t/3SA03/blob/main/images/play.png "first page image")
 
-![alt text](https://github.com/suraw00t/3SA03/blob/master/images/win.png "WIN")
+![alt text](https://github.com/suraw00t/3SA03/blob/main/images/win.png "WIN")
 
